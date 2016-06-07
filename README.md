@@ -1,7 +1,7 @@
 # fex
-### requires
+### requires:
     nodejs v5.8.0
-### 命令
+### commands: 
     开发服务器: npm run dev
     release服务器: npm run release  
     bulid项目: npm run build component
