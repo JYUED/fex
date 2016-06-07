@@ -1,6 +1,7 @@
-fex: A frontend framework with gulp and browserify.
+fex 
 ==========================
-    
+A frontend framework with gulp and browserify.   
+
 ## Requires
     nodejs >=v5.8.0
 
@@ -8,9 +9,11 @@ fex: A frontend framework with gulp and browserify.
     npm install    
 
 ## Usage
+
 run dev server: 
 ```console
 npm run dev
+```
 
 run release server: 
 ```console
