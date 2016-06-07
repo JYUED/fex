@@ -8,20 +8,28 @@ fex: A frontend framework with gulp and browserify.
     npm install    
 
 ## Usage
-    run dev server: 
-        npm run dev
+run dev server: 
+```console
+npm run dev
 
-    run release server: 
-        npm run release  
+run release server: 
+```console
+npm run release  
+```
 
-    bulid: 
-        npm run build component
+bulid: 
+```console
+npm run build component
+```
 
-    clean: 
-        npm run clean component
-
-    watch：
-        npm run watch component
+clean: 
+```console
+npm run clean component
+```
+watch：
+```console
+npm run watch component
+```
 
 ##Contributing
     1. Fork it
