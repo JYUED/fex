@@ -1,6 +1,6 @@
-fex
+fex: A frontend framework with gulp and browserify.
 ==========================
-    A frontend framework with gulp and browserify.
+    
 ## Requires
     nodejs >=v5.8.0
 
@@ -8,11 +8,20 @@ fex
     npm install    
 
 ## Usage
-    开发服务器: npm run dev
-    release服务器: npm run release  
-    bulid项目: npm run build component
-    清除项目: npm run clean
-    动态编译：npm run watch component
+    run dev server: 
+        npm run dev
+
+    run release server: 
+        npm run release  
+
+    bulid: 
+        npm run build component
+
+    clean: 
+        npm run clean component
+
+    watch：
+        npm run watch component
 
 ##Contributing
     1. Fork it
