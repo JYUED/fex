@@ -4,7 +4,7 @@ A frontend framework with gulp and browserify.
 
 ## Features
 - 组件化和支持子组件
-- 使用eslint做js代码检查
+- 使用eslint做js代码检查(es5)
 - livereload
 
 ## Requires

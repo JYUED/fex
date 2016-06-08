@@ -1,0 +1,5 @@
+{
+    "releaseDir": "./public",
+    "cdn": "https://res.jiuyan.info",
+    "js": { "es6": false }
+}

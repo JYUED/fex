@@ -1,12 +1,13 @@
-var $releaseDir   = './public',
+var config        = require('./config.json');
+var $releaseDir   = config.releaseDir,
     $devDir       = './src',
     sysFolder     = ['core', 'layout', 'partials','css', 'js', 'images', 'tpl', 'rev-manifest.json'],
-    cdn           = 'https://res.jiuyan.info';
+    cdn           = config.cdn;
+
 
 var $c,
      _ = require('lodash');
-var argv = process.argv;
-
+var argv            = process.argv;
 var fs              = require('fs'),
     path            = require('path'),
     jsFiles         = require('./gulpfile/jsFiles'),
@@ -21,6 +22,7 @@ var fs              = require('fs'),
     ps              = gulpLoadPlugins(),
     browserify      = require('browserify'),
     through2        = require('through2');
+
 
 
  
