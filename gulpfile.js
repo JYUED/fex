@@ -1,9 +1,8 @@
 var config        = require('./config.json');
-var $releaseDir   = config.releaseDir,
+var $releaseDir   = config.release.dist,
     $devDir       = './src',
     sysFolder     = ['core', 'layout', 'partials','css', 'js', 'images', 'tpl', 'rev-manifest.json'],
-    cdn           = config.cdn;
-
+    cdn           = config.release.cdn;
 
 var $c,
      _ = require('lodash');
@@ -22,9 +21,6 @@ var fs              = require('fs'),
     ps              = gulpLoadPlugins(),
     browserify      = require('browserify'),
     through2        = require('through2');
-
-
-
  
 gulp.task('mockComponent', function(){
     var err = true;
@@ -79,9 +75,9 @@ gulp.task('dev-js', ['mockComponent'], function() {
 gulp.task('dev-server', function() {
     return gulp.src('./src')
                .pipe(ps.webserver({
-                    host:             'localhost',
-                    port:             '8080',
-                    livereload:       true,
+                    host:             config.dev.host,
+                    port:             config.dev.port,
+                    livereload:       config.dev.livereload,
                     directoryListing: true 
     }));
 });
@@ -91,8 +87,8 @@ gulp.task('dev-server', function() {
 gulp.task('release-server', function() {
     gulp.src('./public')
         .pipe(ps.webserver({
-            host:             'localhost',
-            port:             '8081',
+            host:             config.release.host,
+            port:             config.release.port,
             livereload:       false,
             directoryListing: true 
    }));
@@ -108,7 +104,6 @@ var component_images = function(component) {
                .pipe(ps.notify(component._dir + '图片处理完毕！'));
 };
 
-//aa
 var component_css = function(component) {
     // component_images($devDir, $releaseDir, component);
     var manifest = gulp.src(component._manifestPath);

@@ -1,5 +1,10 @@
 {
-    "releaseDir": "./public",
-    "cdn": "https://res.jiuyan.info",
-    "js": { "es6": false }
+    "js": { "es6": false },
+    "dev": {"host": "localhost","port": "8080", "livereload": true},
+    "release": {
+        "dist": "./public",
+        "host": "localhost",
+        "port": "8081",
+        "cdn": "https://res.jiuyan.info"
+    }
 }
