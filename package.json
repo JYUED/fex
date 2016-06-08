@@ -2,6 +2,11 @@
   "name": "fex",
   "description": "Frontend X",
   "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JYUED/fex.git"
+  },
   "scripts": {
     "dev": "./scripts/dev_server.sh",
     "release": "./scripts/release_server.sh",
@@ -10,10 +15,13 @@
     "watch": "./scripts/watch_component.sh"
   },
   "dependencies": {
-    "lodash": "^5.11.1"
+    "lodash": "^4.13.1"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "babelify": "^7.3.0",
     "browserify": "^13.0.1",
+    "browserify-shim": "^3.8.12",
     "colors": "^1.1.2",
     "css-loader": "^0.23.1",
     "del": "^2.2.0",
@@ -29,6 +37,8 @@
     "gulp-concat": "^2.6.0",
     "gulp-htmlmin": "^2.0.0",
     "gulp-imagemin": "^2.4.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-jslint": "^1.0.1",
     "gulp-livereload": "^3.8.1",
     "gulp-load-plugins": "^1.2.2",
     "gulp-minify-css": "^1.2.4",
@@ -41,9 +51,13 @@
     "gulp-sass": "^2.3.1",
     "gulp-uglify": "^1.5.3",
     "gulp-webserver": "^0.9.1",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "https://registry.npm.taobao.org/jshint-stylish/download/jshint-stylish-2.2.0.tgz",
     "node-sass": "^3.6.0",
+    "remove": "^0.1.5",
     "rev-del": "^1.0.5",
-    "through2": "^2.0.1"
+    "through2": "^2.0.1",
+    "tiny-lr": "^0.2.1"
   },
   "browser": {
     "zepto": "./src/lib/zepto/1.1.6/zepto.min.js"

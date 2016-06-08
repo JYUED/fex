@@ -55,14 +55,18 @@ gulp.task('dev-js', ['mockComponent'], function() {
                         '!' + $c._jsPath + '/min.js'
                     ])
                .pipe(ps.plumber())
+               .pipe(ps.jshint())
+               .pipe(ps.jshint.reporter('jshint-stylish'))
                .pipe(through2.obj(function(file, enc, next) {
                     browserify(file.path)
+                    // .transform("babelify", {presets: ["es2015"]})
                     .bundle(function(err, res) {
                         err && console.log(err.stack);
                         file.contents = res;
                         next(null, file);
                     });
                }))
+               
                .pipe(ps.concat('min.js', {newLine: ';'}))
                .pipe(ps.uglify())
                .pipe(gulp.dest($c._dir + '/js'))
