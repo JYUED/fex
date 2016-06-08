@@ -15,6 +15,7 @@
     "watch": "./scripts/watch_component.sh"
   },
   "dependencies": {
+    "bourbon": "^4.2.7",
     "lodash": "^4.13.1"
   },
   "devDependencies": {

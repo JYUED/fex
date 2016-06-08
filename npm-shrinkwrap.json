@@ -391,6 +391,11 @@
       "from": "boom@>=0.4.0 <0.5.0",
       "resolved": "https://registry.npm.taobao.org/boom/download/boom-0.4.2.tgz"
     },
+    "bourbon": {
+      "version": "4.2.7",
+      "from": "bourbon@latest",
+      "resolved": "https://registry.npm.taobao.org/bourbon/download/bourbon-4.2.7.tgz"
+    },
     "brace-expansion": {
       "version": "1.1.4",
       "from": "brace-expansion@>=1.0.0 <2.0.0",
