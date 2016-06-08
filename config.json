@@ -1,6 +1,10 @@
 {
     "js": { "es6": false },
-    "dev": {"host": "localhost","port": "8080", "livereload": true},
+    "dev": {
+        "host": "localhost",
+        "port": "8080", 
+        "livereload": true
+    },
     "release": {
         "dist": "./public",
         "host": "localhost",
