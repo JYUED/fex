@@ -7,6 +7,11 @@
       "from": "abbrev@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npm.taobao.org/abbrev/download/abbrev-1.0.7.tgz"
     },
+    "absolute": {
+      "version": "0.0.1",
+      "from": "absolute@0.0.1",
+      "resolved": "https://registry.npm.taobao.org/absolute/download/absolute-0.0.1.tgz"
+    },
     "accepts": {
       "version": "1.2.13",
       "from": "accepts@>=1.2.13 <1.3.0",
@@ -58,6 +63,11 @@
       "from": "ansi-escapes@>=1.1.0 <2.0.0",
       "resolved": "https://registry.npm.taobao.org/ansi-escapes/download/ansi-escapes-1.4.0.tgz"
     },
+    "ansi-red": {
+      "version": "0.1.1",
+      "from": "ansi-red@>=0.1.1 <0.2.0",
+      "resolved": "https://registry.npm.taobao.org/ansi-red/download/ansi-red-0.1.1.tgz"
+    },
     "ansi-regex": {
       "version": "2.0.0",
       "from": "ansi-regex@>=2.0.0 <3.0.0",
@@ -67,6 +77,11 @@
       "version": "2.2.1",
       "from": "ansi-styles@>=2.2.1 <3.0.0",
       "resolved": "https://registry.npm.taobao.org/ansi-styles/download/ansi-styles-2.2.1.tgz"
+    },
+    "ansi-wrap": {
+      "version": "0.1.0",
+      "from": "ansi-wrap@0.1.0",
+      "resolved": "https://registry.npm.taobao.org/ansi-wrap/download/ansi-wrap-0.1.0.tgz"
     },
     "ansicolors": {
       "version": "0.2.1",
@@ -179,9 +194,9 @@
       "resolved": "https://registry.npm.taobao.org/astw/download/astw-2.0.0.tgz"
     },
     "async": {
-      "version": "0.2.10",
-      "from": "async@>=0.2.10 <0.3.0",
-      "resolved": "https://registry.npm.taobao.org/async/download/async-0.2.10.tgz"
+      "version": "2.0.0-rc.6",
+      "from": "async@latest",
+      "resolved": "https://registry.npm.taobao.org/async/download/async-2.0.0-rc.6.tgz"
     },
     "async-each-series": {
       "version": "1.1.0",
@@ -724,6 +739,40 @@
       "from": "co@3.1.0",
       "resolved": "https://registry.npm.taobao.org/co/download/co-3.1.0.tgz"
     },
+    "co-from-stream": {
+      "version": "0.0.0",
+      "from": "co-from-stream@0.0.0",
+      "resolved": "https://registry.npm.taobao.org/co-from-stream/download/co-from-stream-0.0.0.tgz"
+    },
+    "co-fs": {
+      "version": "1.2.0",
+      "from": "co-fs@1.2.0",
+      "resolved": "https://registry.npm.taobao.org/co-fs/download/co-fs-1.2.0.tgz",
+      "dependencies": {
+        "thunkify": {
+          "version": "0.0.1",
+          "from": "thunkify@0.0.1",
+          "resolved": "https://registry.npm.taobao.org/thunkify/download/thunkify-0.0.1.tgz"
+        }
+      }
+    },
+    "co-fs-extra": {
+      "version": "0.0.2",
+      "from": "co-fs-extra@0.0.2",
+      "resolved": "https://registry.npm.taobao.org/co-fs-extra/download/co-fs-extra-0.0.2.tgz",
+      "dependencies": {
+        "fs-extra": {
+          "version": "0.12.0",
+          "from": "fs-extra@0.12.0",
+          "resolved": "https://registry.npm.taobao.org/fs-extra/download/fs-extra-0.12.0.tgz"
+        }
+      }
+    },
+    "co-read": {
+      "version": "0.0.1",
+      "from": "co-read@0.0.1",
+      "resolved": "https://registry.npm.taobao.org/co-read/download/co-read-0.0.1.tgz"
+    },
     "coa": {
       "version": "1.0.1",
       "from": "coa@>=1.0.1 <1.1.0",
@@ -824,6 +873,11 @@
       "version": "0.1.1",
       "from": "console-stream@>=0.1.1 <0.2.0",
       "resolved": "https://registry.npm.taobao.org/console-stream/download/console-stream-0.1.1.tgz"
+    },
+    "consolidate": {
+      "version": "0.14.1",
+      "from": "consolidate@latest",
+      "resolved": "https://registry.npm.taobao.org/consolidate/download/consolidate-0.14.1.tgz"
     },
     "constant-case": {
       "version": "1.1.2",
@@ -1894,6 +1948,23 @@
       "from": "fs-exists-sync@>=0.1.0 <0.2.0",
       "resolved": "https://registry.npm.taobao.org/fs-exists-sync/download/fs-exists-sync-0.1.0.tgz"
     },
+    "fs-extra": {
+      "version": "0.10.0",
+      "from": "fs-extra@>=0.10.0 <0.11.0",
+      "resolved": "https://registry.npm.taobao.org/fs-extra/download/fs-extra-0.10.0.tgz",
+      "dependencies": {
+        "jsonfile": {
+          "version": "1.2.0",
+          "from": "jsonfile@>=1.2.0 <2.0.0",
+          "resolved": "https://registry.npm.taobao.org/jsonfile/download/jsonfile-1.2.0.tgz"
+        },
+        "ncp": {
+          "version": "0.5.1",
+          "from": "ncp@>=0.5.1 <0.6.0",
+          "resolved": "https://registry.npm.taobao.org/ncp/download/ncp-0.5.1.tgz"
+        }
+      }
+    },
     "fstream": {
       "version": "1.0.9",
       "from": "fstream@>=1.0.0 <2.0.0",
@@ -2103,6 +2174,11 @@
       "from": "graceful-readlink@>=1.0.0",
       "resolved": "https://registry.npm.taobao.org/graceful-readlink/download/graceful-readlink-1.0.1.tgz"
     },
+    "gray-matter": {
+      "version": "2.0.2",
+      "from": "gray-matter@>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npm.taobao.org/gray-matter/download/gray-matter-2.0.2.tgz"
+    },
     "growl": {
       "version": "1.9.2",
       "from": "growl@1.9.2",
@@ -2154,6 +2230,23 @@
       "from": "gulplog@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npm.taobao.org/gulplog/download/gulplog-1.0.0.tgz"
     },
+    "handlebars": {
+      "version": "4.0.5",
+      "from": "handlebars@latest",
+      "resolved": "https://registry.npm.taobao.org/handlebars/download/handlebars-4.0.5.tgz",
+      "dependencies": {
+        "async": {
+          "version": "1.5.2",
+          "from": "async@>=1.4.0 <2.0.0",
+          "resolved": "https://registry.npm.taobao.org/async/download/async-1.5.2.tgz"
+        },
+        "source-map": {
+          "version": "0.4.4",
+          "from": "source-map@>=0.4.4 <0.5.0",
+          "resolved": "https://registry.npm.taobao.org/source-map/download/source-map-0.4.4.tgz"
+        }
+      }
+    },
     "har-validator": {
       "version": "2.0.6",
       "from": "har-validator@>=2.0.6 <2.1.0",
@@ -2173,6 +2266,11 @@
       "version": "1.0.0",
       "from": "has-flag@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npm.taobao.org/has-flag/download/has-flag-1.0.0.tgz"
+    },
+    "has-generators": {
+      "version": "1.0.1",
+      "from": "has-generators@>=1.0.1 <2.0.0",
+      "resolved": "https://registry.npm.taobao.org/has-generators/download/has-generators-1.0.1.tgz"
     },
     "has-gulplog": {
       "version": "0.1.0",
@@ -2810,6 +2908,11 @@
       "from": "json5@>=0.5.0 <0.6.0",
       "resolved": "https://registry.npm.taobao.org/json5/download/json5-0.5.0.tgz"
     },
+    "jsonfile": {
+      "version": "2.3.1",
+      "from": "jsonfile@>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npm.taobao.org/jsonfile/download/jsonfile-2.3.1.tgz"
+    },
     "jsonify": {
       "version": "0.0.0",
       "from": "jsonify@>=0.0.0 <0.1.0",
@@ -2834,6 +2937,11 @@
       "version": "1.2.2",
       "from": "jsprim@>=1.2.2 <2.0.0",
       "resolved": "https://registry.npm.taobao.org/jsprim/download/jsprim-1.2.2.tgz"
+    },
+    "keypress": {
+      "version": "0.2.1",
+      "from": "keypress@>=0.2.1 <0.3.0",
+      "resolved": "https://registry.npm.taobao.org/keypress/download/keypress-0.2.1.tgz"
     },
     "kind-of": {
       "version": "3.0.3",
@@ -3469,6 +3577,11 @@
       "from": "ncname@>=1.0.0 <1.1.0",
       "resolved": "https://registry.npm.taobao.org/ncname/download/ncname-1.0.0.tgz"
     },
+    "ncp": {
+      "version": "0.6.0",
+      "from": "ncp@>=0.6.0 <0.7.0",
+      "resolved": "https://registry.npm.taobao.org/ncp/download/ncp-0.6.0.tgz"
+    },
     "negotiator": {
       "version": "0.5.3",
       "from": "negotiator@0.5.3",
@@ -3749,6 +3862,18 @@
       "version": "0.0.5",
       "from": "open@>=0.0.5 <0.0.6",
       "resolved": "https://registry.npm.taobao.org/open/download/open-0.0.5.tgz"
+    },
+    "optimist": {
+      "version": "0.6.1",
+      "from": "optimist@>=0.6.1 <0.7.0",
+      "resolved": "https://registry.npm.taobao.org/optimist/download/optimist-0.6.1.tgz",
+      "dependencies": {
+        "minimist": {
+          "version": "0.0.10",
+          "from": "minimist@>=0.0.1 <0.1.0",
+          "resolved": "https://registry.npm.taobao.org/minimist/download/minimist-0.0.10.tgz"
+        }
+      }
     },
     "optional": {
       "version": "0.1.3",
@@ -4302,6 +4427,18 @@
       "version": "0.6.2",
       "from": "rechoir@>=0.6.0 <0.7.0",
       "resolved": "https://registry.npm.taobao.org/rechoir/download/rechoir-0.6.2.tgz"
+    },
+    "recursive-readdir": {
+      "version": "1.3.0",
+      "from": "recursive-readdir@>=1.2.1 <2.0.0",
+      "resolved": "https://registry.npm.taobao.org/recursive-readdir/download/recursive-readdir-1.3.0.tgz",
+      "dependencies": {
+        "minimatch": {
+          "version": "0.3.0",
+          "from": "minimatch@0.3.0",
+          "resolved": "https://registry.npm.taobao.org/minimatch/download/minimatch-0.3.0.tgz"
+        }
+      }
     },
     "redent": {
       "version": "1.0.0",
@@ -5019,6 +5156,11 @@
       "from": "through2-filter@>=2.0.0 <3.0.0",
       "resolved": "https://registry.npm.taobao.org/through2-filter/download/through2-filter-2.0.0.tgz"
     },
+    "thunkify": {
+      "version": "2.1.2",
+      "from": "thunkify@>=2.1.2 <3.0.0",
+      "resolved": "https://registry.npm.taobao.org/thunkify/download/thunkify-2.1.2.tgz"
+    },
     "tildify": {
       "version": "1.2.0",
       "from": "tildify@>=1.0.0 <2.0.0",
@@ -5132,7 +5274,14 @@
     "uglify-js": {
       "version": "2.6.2",
       "from": "uglify-js@>=2.6.0 <2.7.0",
-      "resolved": "https://registry.npm.taobao.org/uglify-js/download/uglify-js-2.6.2.tgz"
+      "resolved": "https://registry.npm.taobao.org/uglify-js/download/uglify-js-2.6.2.tgz",
+      "dependencies": {
+        "async": {
+          "version": "0.2.10",
+          "from": "async@>=0.2.6 <0.3.0",
+          "resolved": "https://registry.npm.taobao.org/async/download/async-0.2.10.tgz"
+        }
+      }
     },
     "uglify-save-license": {
       "version": "0.4.1",
@@ -5178,6 +5327,11 @@
       "version": "1.0.0",
       "from": "unpipe@1.0.0",
       "resolved": "https://registry.npm.taobao.org/unpipe/download/unpipe-1.0.0.tgz"
+    },
+    "unyield": {
+      "version": "0.0.1",
+      "from": "unyield@0.0.1",
+      "resolved": "https://registry.npm.taobao.org/unyield/download/unyield-0.0.1.tgz"
     },
     "unzip-response": {
       "version": "1.0.0",
@@ -5383,6 +5537,11 @@
       "version": "1.2.10",
       "from": "which@>=1.2.10 <2.0.0",
       "resolved": "https://registry.npm.taobao.org/which/download/which-1.2.10.tgz"
+    },
+    "win-fork": {
+      "version": "1.1.1",
+      "from": "win-fork@>=1.1.1 <2.0.0",
+      "resolved": "https://registry.npm.taobao.org/win-fork/download/win-fork-1.1.1.tgz"
     },
     "window-size": {
       "version": "0.1.0",

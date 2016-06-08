@@ -11,18 +11,23 @@
     "dev": "./scripts/dev_server.sh",
     "release": "./scripts/release_server.sh",
     "build": "./scripts/build_component.sh",
+    "generate": "./scripts/generate_component.sh",
     "clean": "./scripts/clean_component.sh",
     "watch": "./scripts/watch_component.sh"
   },
   "dependencies": {
+    "async": "^2.0.0-rc.6",
     "bourbon": "^4.2.7",
+    "handlebars": "^4.0.5",
     "lodash": "^4.13.1"
   },
   "devDependencies": {
     "babel-eslint": "^6.0.4",
     "browserify": "^13.0.1",
     "browserify-shim": "^3.8.12",
+    "cli-prompt": "^0.6.0",
     "colors": "^1.1.2",
+    "consolidate": "^0.14.1",
     "css-loader": "^0.23.1",
     "del": "^2.2.0",
     "eslint-config-airbnb-es5": "^1.0.9",
@@ -52,6 +57,7 @@
     "gulp-sass": "^2.3.1",
     "gulp-uglify": "^1.5.3",
     "gulp-webserver": "^0.9.1",
+    "metalsmith": "^2.1.0",
     "node-sass": "^3.6.0",
     "rev-del": "^1.0.5",
     "through2": "^2.0.1",

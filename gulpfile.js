@@ -21,11 +21,12 @@ var fs              = require('fs'),
     ps              = gulpLoadPlugins(),
     browserify      = require('browserify'),
     through2        = require('through2');
+    generator       = require('./generator/generator')
 
 var includePaths = require('bourbon').includePaths;
-includePaths.push(nodePath.join(__dirname, 'src/core/scss'));
-includePaths.push(nodePath.join(__dirname, 'src/core'));
-includePaths.push(nodePath.join(__dirname, 'src/lib'));
+includePaths.push(path.join(__dirname, 'src/core/scss'));
+includePaths.push(path.join(__dirname, 'src/core'));
+includePaths.push(path.join(__dirname, 'src/lib'));
 
  
 gulp.task('mockComponent', function(){
@@ -251,3 +252,12 @@ gulp.task('releaseComponent', ['component'], function(cb){
          console.log('Deleted files and folders:\n', paths.join('\n'));
     });
  })
+
+gulp.task('generateComponent', ['mockComponent'], function(){
+    generator('generator', '../' + $c._dir, function(err) {
+    if (err) {
+        console.log(err);
+    }
+});
+
+})
