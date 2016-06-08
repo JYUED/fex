@@ -55,8 +55,8 @@ gulp.task('dev-js', ['mockComponent'], function() {
                         '!' + $c._jsPath + '/min.js'
                     ])
                .pipe(ps.plumber())
-               .pipe(ps.jshint())
-               .pipe(ps.jshint.reporter('jshint-stylish'))
+               .pipe(ps.eslint())
+               .pipe(ps.eslint.format())
                .pipe(through2.obj(function(file, enc, next) {
                     browserify(file.path)
                     // .transform("babelify", {presets: ["es2015"]})
@@ -72,8 +72,6 @@ gulp.task('dev-js', ['mockComponent'], function() {
                .pipe(gulp.dest($c._dir + '/js'))
                .pipe(ps.notify($c._dir + '/js/min.js 压缩完毕！'));
 });
-
-
 
 //开启本地 Web 服务器功能
 gulp.task('dev-server', function() {
