@@ -21,6 +21,12 @@ var fs              = require('fs'),
     ps              = gulpLoadPlugins(),
     browserify      = require('browserify'),
     through2        = require('through2');
+
+var includePaths = require('bourbon').includePaths;
+includePaths.push(nodePath.join(__dirname, 'src/core/scss'));
+includePaths.push(nodePath.join(__dirname, 'src/core'));
+includePaths.push(nodePath.join(__dirname, 'src/lib'));
+
  
 gulp.task('mockComponent', function(){
     var err = true;
@@ -40,7 +46,7 @@ gulp.task('mockComponent', function(){
 gulp.task('dev-css',['mockComponent'], function() {
     return gulp.src($c._dir + '/css/*.scss')
 	           .pipe(ps.plumber())
-               .pipe(ps.sass())
+               .pipe(ps.sass({includePaths: includePaths}))
                .pipe(ps.minifyCss())
                .pipe(ps.concat('min.css'))
                .pipe(gulp.dest($c._dir + '/css'))
@@ -109,7 +115,7 @@ var component_css = function(component) {
     var manifest = gulp.src(component._manifestPath);
     return gulp.src(component._dir + '/css/*.scss')
 		.pipe(ps.plumber())
-        .pipe(ps.sass())
+        .pipe(ps.sass({includePaths: includePaths}))
         .pipe(ps.revReplace({manifest: manifest}))
         .pipe(ps.minifyCss())
         .pipe(ps.base64({
