@@ -20,14 +20,21 @@ var fs              = require('fs'),
     gulpLoadPlugins = require('gulp-load-plugins'),
     ps              = gulpLoadPlugins(),
     browserify      = require('browserify'),
-    through2        = require('through2');
-    generator       = require('./generator/generator')
+    through2        = require('through2'),
+    generator       = require('./generator/generator'),
+    cssnano         = require('cssnano'),
+    autoprefixer    = require('autoprefixer');
+
+
 
 var includePaths = require('bourbon').includePaths;
 includePaths.push(path.join(__dirname, 'src/core/scss'));
 includePaths.push(path.join(__dirname, 'src/core'));
 includePaths.push(path.join(__dirname, 'src/lib'));
-
+var cssProcessors = [
+    autoprefixer({browsers: ['last 2 version']}),
+    cssnano(),
+];
  
 gulp.task('mockComponent', function(){
     var err = true;
@@ -48,7 +55,7 @@ gulp.task('dev-css',['mockComponent'], function() {
     return gulp.src($c._dir + '/css/*.scss')
 	           .pipe(ps.plumber())
                .pipe(ps.sass({includePaths: includePaths}))
-               .pipe(ps.minifyCss())
+               .pipe(ps.postcss(cssProcessors))
                .pipe(ps.concat('min.css'))
                .pipe(gulp.dest($c._dir + '/css'))
                .pipe(ps.notify($c._dir + '/css/min.css 压缩完毕！'));
@@ -89,7 +96,6 @@ gulp.task('dev-server', function() {
     }));
 });
 //=== 开发环境 END ===
-
 // release
 gulp.task('release-server', function() {
     gulp.src('./public')
@@ -118,7 +124,6 @@ var component_css = function(component) {
 		.pipe(ps.plumber())
         .pipe(ps.sass({includePaths: includePaths}))
         .pipe(ps.revReplace({manifest: manifest}))
-        .pipe(ps.minifyCss())
         .pipe(ps.base64({
             baseDir: 'public',
             extensions: ['svg', 'png', /\.jpg#datauri$/i],
@@ -130,7 +135,7 @@ var component_css = function(component) {
         .pipe(ps.concat('min.css'))
         .pipe(ps.rev())                                            
         .pipe(ps.cdnify({ base: cdn }))
-        .pipe(ps.autoprefixer({ browsers: ['last 2 versions'], cascade: false }))
+        .pipe(ps.postcss(cssProcessors))
         .pipe(gulp.dest(component._releaseDir + '/css'))
         .pipe(ps.rev.manifest(component._manifestPath, { base: component._dir, merge: true }))
         .pipe(gulp.dest(component._dir))
@@ -170,7 +175,7 @@ function component_html(component) {
                    baseDir: 'public',
                    extensions: ['svg', 'png', /\.jpg#datauri$/i],
                    exclude:    [/\.server\.(com|net)\/dynamic\//, '--live.jpg'],
-                   maxImageSize: 8*1024, // bytes,
+                   maxImageSize: 5*1024, // bytes,
                    deleteAfterEncoding: false,
                    debug: true
                }))

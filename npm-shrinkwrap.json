@@ -210,7 +210,7 @@
     },
     "autoprefixer": {
       "version": "6.3.6",
-      "from": "autoprefixer@>=6.3.1 <7.0.0",
+      "from": "https://registry.npm.taobao.org/autoprefixer/download/autoprefixer-6.3.6.tgz",
       "resolved": "https://registry.npm.taobao.org/autoprefixer/download/autoprefixer-6.3.6.tgz"
     },
     "aws-sign2": {
@@ -584,9 +584,9 @@
       "resolved": "https://registry.npm.taobao.org/camelcase-keys/download/camelcase-keys-2.1.0.tgz"
     },
     "caniuse-db": {
-      "version": "1.0.30000475",
+      "version": "1.0.30000479",
       "from": "caniuse-db@>=1.0.30000444 <2.0.0",
-      "resolved": "https://registry.npm.taobao.org/caniuse-db/download/caniuse-db-1.0.30000475.tgz"
+      "resolved": "https://registry.npm.taobao.org/caniuse-db/download/caniuse-db-1.0.30000479.tgz"
     },
     "capture-stack-trace": {
       "version": "1.0.0",
@@ -990,12 +990,13 @@
     },
     "cssnano": {
       "version": "3.7.0",
-      "from": "cssnano@>=2.6.1 <4.0.0",
+      "from": "https://registry.npm.taobao.org/cssnano/download/cssnano-3.7.0.tgz",
       "resolved": "https://registry.npm.taobao.org/cssnano/download/cssnano-3.7.0.tgz",
       "dependencies": {
         "object-assign": {
           "version": "4.1.0",
-          "from": "object-assign@>=4.0.1 <5.0.0"
+          "from": "object-assign@>=4.0.1 <5.0.0",
+          "resolved": "https://registry.npm.taobao.org/object-assign/download/object-assign-4.1.0.tgz"
         }
       }
     },
@@ -2211,12 +2212,13 @@
     },
     "gulp-sourcemaps": {
       "version": "1.6.0",
-      "from": "gulp-sourcemaps@>=1.5.2 <2.0.0",
+      "from": "https://registry.npm.taobao.org/gulp-sourcemaps/download/gulp-sourcemaps-1.6.0.tgz",
       "resolved": "https://registry.npm.taobao.org/gulp-sourcemaps/download/gulp-sourcemaps-1.6.0.tgz",
       "dependencies": {
         "vinyl": {
           "version": "1.1.1",
-          "from": "vinyl@>=1.0.0 <2.0.0"
+          "from": "vinyl@>=1.0.0 <2.0.0",
+          "resolved": "https://registry.npm.taobao.org/vinyl/download/vinyl-1.1.1.tgz"
         }
       }
     },
@@ -4085,9 +4087,9 @@
       "resolved": "https://registry.npm.taobao.org/postcss-colormin/download/postcss-colormin-2.2.0.tgz"
     },
     "postcss-convert-values": {
-      "version": "2.3.6",
+      "version": "2.4.0",
       "from": "postcss-convert-values@>=2.3.4 <3.0.0",
-      "resolved": "https://registry.npm.taobao.org/postcss-convert-values/download/postcss-convert-values-2.3.6.tgz"
+      "resolved": "https://registry.npm.taobao.org/postcss-convert-values/download/postcss-convert-values-2.4.0.tgz"
     },
     "postcss-discard-comments": {
       "version": "2.0.4",
@@ -4458,9 +4460,9 @@
       }
     },
     "reduce-css-calc": {
-      "version": "1.2.3",
+      "version": "1.2.4",
       "from": "reduce-css-calc@>=1.2.0 <2.0.0",
-      "resolved": "https://registry.npm.taobao.org/reduce-css-calc/download/reduce-css-calc-1.2.3.tgz",
+      "resolved": "https://registry.npm.taobao.org/reduce-css-calc/download/reduce-css-calc-1.2.4.tgz",
       "dependencies": {
         "balanced-match": {
           "version": "0.1.0",
@@ -5436,18 +5438,6 @@
         "readable-stream": {
           "version": "2.1.4",
           "from": "readable-stream@>=2.0.0 <3.0.0"
-        }
-      }
-    },
-    "vinyl-bufferstream": {
-      "version": "1.0.1",
-      "from": "vinyl-bufferstream@>=1.0.1 <2.0.0",
-      "resolved": "https://registry.npm.taobao.org/vinyl-bufferstream/download/vinyl-bufferstream-1.0.1.tgz",
-      "dependencies": {
-        "bufferstreams": {
-          "version": "1.0.1",
-          "from": "bufferstreams@1.0.1",
-          "resolved": "https://registry.npm.taobao.org/bufferstreams/download/bufferstreams-1.0.1.tgz"
         }
       }
     },

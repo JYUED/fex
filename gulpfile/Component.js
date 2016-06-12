@@ -12,6 +12,6 @@ module.exports = function Component(component, $devDir, $releaseDir) {
     this._name = component;
     this._dir = path.join(this.devDir, component);
     this._releaseDir = path.join(this.releaseDir, component); 
-    this._manifestPath = path.join(this.releaseDir,'rev-manifest.json');
+    this._manifestPath = path.join(this._dir,'rev-manifest.json');
     this._jsPath = path.join(this._dir, 'js');
 }
