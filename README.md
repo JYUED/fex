@@ -6,6 +6,7 @@ A frontend framework with gulp and browserify.
 - 组件化和支持子组件
 - 使用eslint做js代码检查(es5)
 - livereload
+- 使用postcss
 - 使用Modernizr
 - 支持webp
 
