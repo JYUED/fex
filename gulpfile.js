@@ -130,7 +130,7 @@ var component_css = function(component) {
             exclude:    [/\.server\.(com|net)\/dynamic\//, '--live.jpg'],
             maxImageSize: 5*1024, // bytes,
             deleteAfterEncoding: false,
-            debug: true
+            debug: false; 
         }))
         .pipe(ps.concat('min.css'))
         .pipe(ps.rev())                                            
