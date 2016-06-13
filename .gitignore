@@ -1,6 +1,7 @@
 node_modules
 public
 npm-debug.log
-*/**/rev-manifest.json
-*/**/**/rev-manifest.json
+rev-manifest.json
+.DS\_Store
+*.swp
 

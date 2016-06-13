@@ -13,7 +13,8 @@
     "build": "./scripts/build_component.sh",
     "generate": "./scripts/generate_component.sh",
     "clean": "./scripts/clean_component.sh",
-    "watch": "./scripts/watch_component.sh"
+    "watch": "./scripts/watch_component.sh",
+    "modernizr": "modernizr -c modernizr-config.json -d ./src/lib/modernizr/"
   },
   "dependencies": {
     "async": "^2.0.0-rc.6",
@@ -57,15 +58,18 @@
     "gulp-rev-replace": "^0.4.3",
     "gulp-sass": "^2.3.1",
     "gulp-uglify": "^1.5.3",
+    "gulp-webp": "^2.3.0",
     "gulp-webserver": "^0.9.1",
     "metalsmith": "^2.1.0",
     "node-sass": "^3.6.0",
     "rev-del": "^1.0.5",
     "through2": "^2.0.1",
-    "tiny-lr": "^0.2.1"
+    "tiny-lr": "^0.2.1",
+    "webpcss": "^1.1.2"
   },
   "browser": {
-    "zepto": "./src/lib/zepto/1.1.6/zepto.min.js"
+    "zepto": "./src/lib/zepto/1.1.6/zepto.min.js",
+    "Modernizr": "./src/lib/modernizr/modernizr.js"
   },
   "browserify-shim": {
     "zepto": "$"

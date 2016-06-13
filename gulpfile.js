@@ -23,18 +23,28 @@ var fs              = require('fs'),
     through2        = require('through2'),
     generator       = require('./generator/generator'),
     cssnano         = require('cssnano'),
-    autoprefixer    = require('autoprefixer');
-
-
+    autoprefixer    = require('autoprefixer'),
+    webpcss         = require('webpcss');
 
 var includePaths = require('bourbon').includePaths;
 includePaths.push(path.join(__dirname, 'src/core/scss'));
 includePaths.push(path.join(__dirname, 'src/core'));
 includePaths.push(path.join(__dirname, 'src/lib'));
+
 var cssProcessors = [
     autoprefixer({browsers: ['last 2 version']}),
+    webpcss.default,
     cssnano(),
 ];
+
+var base64Extensions = ['jpg', 'webp', 'svg', 'png', /\.jpg#datauri$/i];
+
+var jsSrc = function($c) {
+    return [ 
+        $c._jsPath + '/*.js', 
+        '!' + $c._jsPath + '/min.js'
+    ];
+}
  
 gulp.task('mockComponent', function(){
     var err = true;
@@ -62,10 +72,7 @@ gulp.task('dev-css',['mockComponent'], function() {
 });
 
 gulp.task('dev-js', ['mockComponent'], function() {
-    return gulp.src([
-                        $c._jsPath + '/*.js', 
-                        '!' + $c._jsPath + '/min.js'
-                    ])
+    return gulp.src(jsSrc($c))
                .pipe(ps.plumber())
                .pipe(ps.eslint())
                .pipe(ps.eslint.format())
@@ -108,6 +115,7 @@ gulp.task('release-server', function() {
 
 });
 
+
 var component_images = function(component) {
     return gulp.src(component._dir + '/images/*')
                .pipe(ps.rev())                                            
@@ -118,24 +126,23 @@ var component_images = function(component) {
 };
 
 var component_css = function(component) {
-    // component_images($devDir, $releaseDir, component);
     var manifest = gulp.src(component._manifestPath);
     return gulp.src(component._dir + '/css/*.scss')
 		.pipe(ps.plumber())
         .pipe(ps.sass({includePaths: includePaths}))
+        .pipe(ps.postcss(cssProcessors))
         .pipe(ps.revReplace({manifest: manifest}))
         .pipe(ps.base64({
             baseDir: 'public',
-            extensions: ['svg', 'png', /\.jpg#datauri$/i],
+            extensions: base64Extensions,
             exclude:    [/\.server\.(com|net)\/dynamic\//, '--live.jpg'],
             maxImageSize: 5*1024, // bytes,
             deleteAfterEncoding: false,
-            debug: false; 
+            debug: false,
         }))
         .pipe(ps.concat('min.css'))
         .pipe(ps.rev())                                            
         .pipe(ps.cdnify({ base: cdn }))
-        .pipe(ps.postcss(cssProcessors))
         .pipe(gulp.dest(component._releaseDir + '/css'))
         .pipe(ps.rev.manifest(component._manifestPath, { base: component._dir, merge: true }))
         .pipe(gulp.dest(component._dir))
@@ -144,10 +151,7 @@ var component_css = function(component) {
 
 function component_js(component) {
     var manifest = gulp.src(component._manifestPath);
-    return gulp.src([
-                        $c._jsPath + '/*.js', 
-                        '!' + $c._jsPath + '/min.js'
-                    ])
+    return gulp.src(jsSrc(component))
                .pipe(ps.plumber())
                .pipe(through2.obj(function(file, enc, next) {
                     browserify(file.path)
@@ -170,22 +174,28 @@ function component_html(component) {
     var manifest = gulp.src(component._manifestPath);
     return  gulp.src(component._dir + '/*/*.html')
 		       .pipe(ps.plumber())
-               .pipe(ps.revReplace({manifest: manifest}))
                .pipe(ps.base64({
                    baseDir: 'public',
-                   extensions: ['svg', 'png', /\.jpg#datauri$/i],
+                   extensions: base64Extensions,
                    exclude:    [/\.server\.(com|net)\/dynamic\//, '--live.jpg'],
                    maxImageSize: 5*1024, // bytes,
                    deleteAfterEncoding: false,
                    debug: true
                }))
+              .pipe(ps.revReplace({manifest: manifest}))
               .pipe(ps.cdnify({ base: cdn }))
               .pipe(ps.htmlmin({collapseWhitespace: true}))
               .pipe(gulp.dest(component._releaseDir))
               .pipe(ps.notify(component._releaseDir + ' html 压缩完毕！'));
 }
 
-gulp.task('images', ['mockComponent'], function() {
+gulp.task('webp', ['mockComponent'], function () {
+    return gulp.src($c._imagesPath + '/*.{png,jpg,jpeg}')
+               .pipe(ps.webp())
+               .pipe(gulp.dest($c._imagesPath));
+});
+
+gulp.task('images', ['mockComponent', 'webp'], function() {
     return component_images($c);
 }); 
 
@@ -260,9 +270,8 @@ gulp.task('releaseComponent', ['component'], function(cb){
 
 gulp.task('generateComponent', ['mockComponent'], function(){
     generator('generator', '../' + $c._dir, function(err) {
-    if (err) {
-        console.log(err);
-    }
-});
-
+        if (err) { console.log(err); }
+    });
 })
+
+
