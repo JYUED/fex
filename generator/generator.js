@@ -4,7 +4,6 @@ var async = require('async')
 var render = require('consolidate').handlebars.render
 var path = require('path')
 
-// register handlebars helper
 Handlebars.registerHelper('if_eq', function (a, b, opts) {
    return a === b
        ? opts.fn(this)

@@ -85,7 +85,6 @@ gulp.task('dev-js', ['mockComponent'], function() {
                         next(null, file);
                     });
                }))
-               
                .pipe(ps.concat('min.js', {newLine: ';'}))
                .pipe(ps.uglify())
                .pipe(gulp.dest($c._dir + '/js'))
@@ -102,6 +101,7 @@ gulp.task('dev-server', function() {
                     directoryListing: true 
     }));
 });
+
 //=== 开发环境 END ===
 // release
 gulp.task('release-server', function() {
