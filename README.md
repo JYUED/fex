@@ -1,5 +1,6 @@
 fex 
 ==========================
+[![build status][travis-image]][travis-url]
 A frontend framework with gulp and browserify.   
 
 ## Features
