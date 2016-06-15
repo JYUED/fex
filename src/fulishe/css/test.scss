@@ -1,18 +1,21 @@
 .fulishe {
     width: 10rem;
+    /* @meta {"spritesheet": {"include": true}} */
+    background-image: url(../images/chenggou-bg.png);  
 }
 
 .fulishe2 {
     width: 10rem;
     height: 2rem;
-    background-image: url(/fulishe/images/homepage.jpg);
+    background-image: url(../images/homepage.jpg);     
     background-size: contain;
 }
 
 .fulishe3 {
     width: 10rem;
     height: 2rem;
-    background-image: url(/fulishe/images/icon-arrow.png);
+    /* @meta {"spritesheet": {"include": true}} */
+    background-image: url(../images/icon-arrow.png);  
     background-size: contain;
 }
 

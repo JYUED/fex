@@ -31,12 +31,14 @@ includePaths.push(path.join(__dirname, 'src/core/scss'));
 includePaths.push(path.join(__dirname, 'src/core'));
 includePaths.push(path.join(__dirname, 'src/lib'));
 
-var cssProcessors = [
-    autoprefixer({browsers: ['last 2 version']}),
-    webpcss.default,
-    cssnano(),
-];
-
+var cssProcessors = function(component) {
+    return [
+        autoprefixer({browsers: ['last 2 version']}),
+        webpcss.default,
+        cssnano(),
+    ];
+}
+    
 var base64Extensions = ['jpg', 'webp', 'svg', 'png', /\.jpg#datauri$/i];
 
 var jsSrc = function($c) {
@@ -65,7 +67,7 @@ gulp.task('dev-css',['mockComponent'], function() {
     return gulp.src($c._dir + '/css/*.scss')
 	           .pipe(ps.plumber())
                .pipe(ps.sass({includePaths: includePaths}))
-               .pipe(ps.postcss(cssProcessors))
+               .pipe(ps.postcss(cssProcessors($c)))
                .pipe(ps.concat('min.css'))
                .pipe(gulp.dest($c._dir + '/css'))
                .pipe(ps.notify($c._dir + '/css/min.css 压缩完毕！'));
@@ -130,23 +132,21 @@ var component_css = function(component) {
     return gulp.src(component._dir + '/css/*.scss')
 		.pipe(ps.plumber())
         .pipe(ps.sass({includePaths: includePaths}))
-        .pipe(ps.postcss(cssProcessors))
         .pipe(ps.revReplace({manifest: manifest}))
         .pipe(ps.base64({
-            baseDir: 'public',
+            baseDir: component._releaseImagesPath,
             extensions: base64Extensions,
             exclude:    [/\.server\.(com|net)\/dynamic\//, '--live.jpg'],
             maxImageSize: 5*1024, // bytes,
             deleteAfterEncoding: false,
-            debug: false,
+            debug: true,
         }))
         .pipe(ps.concat('min.css'))
         .pipe(ps.rev())                                            
-        .pipe(ps.cdnify({ base: cdn }))
+        // .pipe(ps.cdnify({ base: cdn }))
         .pipe(gulp.dest(component._releaseDir + '/css'))
         .pipe(ps.rev.manifest(component._manifestPath, { base: component._dir, merge: true }))
         .pipe(gulp.dest(component._dir))
-        .pipe(ps.notify(component._releaseDir + ' min.css 压缩完毕！'));
 }
 
 function component_js(component) {
@@ -174,33 +174,47 @@ function component_html(component) {
     var manifest = gulp.src(component._manifestPath);
     return  gulp.src(component._dir + '/*/*.html')
 		       .pipe(ps.plumber())
-               .pipe(ps.base64({
-                   baseDir: 'public',
-                   extensions: base64Extensions,
-                   exclude:    [/\.server\.(com|net)\/dynamic\//, '--live.jpg'],
-                   maxImageSize: 5*1024, // bytes,
-                   deleteAfterEncoding: false,
-                   debug: true
-               }))
-              .pipe(ps.revReplace({manifest: manifest}))
+               .pipe(ps.revReplace({manifest: manifest}))
               .pipe(ps.cdnify({ base: cdn }))
               .pipe(ps.htmlmin({collapseWhitespace: true}))
               .pipe(gulp.dest(component._releaseDir))
               .pipe(ps.notify(component._releaseDir + ' html 压缩完毕！'));
 }
 
-gulp.task('webp', ['mockComponent'], function () {
-    return gulp.src($c._imagesPath + '/*.{png,jpg,jpeg}')
-               .pipe(ps.webp())
-               .pipe(gulp.dest($c._imagesPath));
-});
 
-gulp.task('images', ['mockComponent', 'webp'], function() {
+
+gulp.task('images', ['mockComponent'], function() {
     return component_images($c);
 }); 
 
-gulp.task('css', ['images'], function() {
+gulp.task('component_css', ['images'], function() {
     return component_css($c);
+}); 
+
+gulp.task('spriter', ['component_css'], function() {
+    var timestamp = +new Date();
+    return gulp.src($c._releaseDir + '/css/*.css')
+               .pipe(ps.cssSpriter({
+                    'includeMode': 'explicit',
+                    'spriteSheet': $c._releaseImagesPath + '/spritesheet/spritesheet' + timestamp + '.png',
+                    'pathToSpriteSheetFromCSS': '../images/spritesheet/spritesheet' + timestamp + '.png'
+               }))
+               .pipe(ps.postcss(cssProcessors($c)))
+               .pipe(gulp.dest($c._releaseDir + '/css'))
+               .pipe(ps.notify($c._releaseDir + ' min.css 压缩完毕！'));
+});
+
+gulp.task('webp', ['spriter'], function () {
+    return gulp.src([
+                        $c._releaseImagesPath + '/*.{png,jpg,jpeg}',
+                        $c._releaseImagesPath + '/**/*.{png,jpg,jpeg}',
+                ])
+               .pipe(ps.webp())
+               .pipe(gulp.dest($c._releaseImagesPath));
+});
+
+gulp.task('css', ['webp'], function() {
+    //console.log('css is ===done===');
 }); 
 
 gulp.task('js', ['css'], function() {
@@ -262,11 +276,11 @@ gulp.task('releaseComponent', ['component'], function(cb){
     }
 });
 
- gulp.task('releaseClean', ['mockComponent'], function(){
-    del([$c._releaseDir + '/**', $c._dir + '/**/rev-manifest.json']).then( function(paths){
-         console.log('Deleted files and folders:\n', paths.join('\n'));
-    });
- })
+gulp.task('releaseClean', ['mockComponent'], function(){
+   del([$c._releaseDir + '/**', $c._dir + '/**/rev-manifest.json', $c._dir + '/images/*.webp']).then( function(paths){
+        console.log('Deleted files and folders:\n', paths.join('\n'));
+   });
+})
 
 gulp.task('generateComponent', ['mockComponent'], function(){
     generator('generator', '../' + $c._dir, function(err) {

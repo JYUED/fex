@@ -9,6 +9,7 @@
         "dist": "./public",
         "host": "localhost",
         "port": "8081",
-        "cdn": "//res.jiuyan.info"
+        "cdn": "",
+        "cdn1": "//res.jiuyan.info"
     }
 }
