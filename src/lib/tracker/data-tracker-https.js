@@ -23,7 +23,7 @@
 
 */
 
-window.Tracker || (function() {
+(function() {
 
     function Tracker(config) {
         config = config || {};
@@ -38,7 +38,8 @@ window.Tracker || (function() {
         var jySeedName = this.jySeedName = config.jySeedName || "data-jyseed";
         // google和自己服务器的统计埋点名称
         var allSeedName = this.allSeedName = config.allSeedName || "data-allseed";
-
+        //
+        var res = location.protocol;
         $("head").append('<style> div[' + seedName +'],div[' + jySeedName + '],div[' + allSeedName + '] { cursor: pointer; } </style>');
 
         function trackEventHandler(e){
@@ -53,7 +54,7 @@ window.Tracker || (function() {
             var allGaparam = $this.attr(allSeedName);
             if(allGaparam){
                 gaparam = allGaparam;
-                jyurl = "http://stats1.jiuyan.info/itugo_deleven.html?action=" + allGaparam;
+                jyurl = res + "//stats1.jiuyan.info/itugo_deleven.html?action=" + allGaparam;
             }
             
             var alreadyCalled = false;
@@ -94,6 +95,11 @@ window.Tracker || (function() {
                     });
                 } else {
                     (typeof _gaq !== "undefined") && _gaq.push(['_trackEvent', parArray[0], parArray[1], parArray[2]]);
+                }
+
+                // 百度统计
+                if(typeof _hmt !== 'undefined'){
+                    _hmt.push(['_trackEvent', parArray[0], parArray[1], parArray[2] ]);
                 }
             }
 
@@ -256,7 +262,7 @@ window.Tracker || (function() {
         var jyFinished = false;
         var gaFinished = false;
         var isCalled = false;
-
+        var res = location.protocol;
         // ga
         var parArray = seed.split("*");
         parArray[0] = parArray[0] || "";
@@ -284,6 +290,11 @@ window.Tracker || (function() {
             (typeof _gaq !== "undefined") && _gaq.push(['_trackEvent', parArray[0], parArray[1], parArray[2]]);
         }
 
+        // 百度统计
+        if(typeof _hmt !== 'undefined'){
+            _hmt.push(['_trackEvent', parArray[0], parArray[1], parArray[2] ]);
+        }
+
         // tj
         
         // attach token as parameter
@@ -292,7 +303,8 @@ window.Tracker || (function() {
             param._token = InAppUtils.getToken();
         }
 
-        var jyurl = "http://stats1.jiuyan.info/itugo_deleven.html?action=" + seed;
+        var jyurl = res + "//stats1.jiuyan.info/itugo_deleven.html?action=" + seed;
+        console.log(jyurl);
         $.ajax({
             url:jyurl,
             dataType: 'jsonp',
