@@ -9,6 +9,7 @@ A frontend framework with gulp and browserify.
 - 使用postcss
 - 使用Modernizr
 - 支持webp
+- 支持spriter
 
 ## Requires
     nodejs >=v5.8.0
