@@ -1,6 +1,7 @@
 fex 
 ==========================
-    [![build status][travis-image]][travis-url]
+[travis-url]: https://travis-ci.org/JYUED/fex
+[![build status][travis-image]][travis-url]
 
 A frontend framework with gulp and browserify.   
 
