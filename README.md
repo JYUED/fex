@@ -12,7 +12,7 @@ A frontend framework with gulp and browserify.
 - 使用Modernizr
 - 支持webp
 - 支持spriter
-- 使用jasmine做为单元测试框架
+- karma + jasmine
 
 ## Requires
     nodejs >=v5.8.0
