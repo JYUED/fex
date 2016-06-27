@@ -1,6 +1,6 @@
 describe("Player", function() {
-  var Player = require('../../src/lib/jasmine_examples/Player');
-  var Song = require('../../src/lib/jasmine_examples/Song');
+  var Player = require('../../lib/jasmine_examples/Player');
+  var Song = require('../../lib/jasmine_examples/Song');
   var player;
   var song;
 
@@ -8,6 +8,12 @@ describe("Player", function() {
     player = new Player();
     song = new Song();
   });
+
+  it("hahah", function() {
+    var b = true;  
+    expect(b).toBe(true);
+  });
+
 
   it("should be able to play a Song", function() {
     player.play(song);
