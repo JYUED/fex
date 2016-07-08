@@ -18,8 +18,10 @@ Handlebars.registerHelper('unless_eq', function (a, b, opts) {
 
 module.exports = function generate(src, dest, done) {
     var metalsmith = Metalsmith(path.join(__dirname));
+    var component = dest.split(path.sep).pop();
     var data = Object.assign(metalsmith.metadata(), {
-         noEscape: true,
+            component: component,
+            noEscape: true,
         })
 
     metalsmith

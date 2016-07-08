@@ -11,7 +11,7 @@
     "dev": "./scripts/dev_server.sh",
     "release": "./scripts/release_server.sh",
     "build": "./scripts/build_component.sh",
-    "generate": "./scripts/generate_component.sh",
+    "g": "./scripts/generate_component.sh",
     "clean": "./scripts/clean_component.sh",
     "watch": "./scripts/watch_component.sh",
     "modernizr": "modernizr -c modernizr-config.json -d ./src/lib/modernizr/"
