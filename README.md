@@ -1,7 +1,5 @@
 fex 
 ==========================
-> [![Build Status](https://travis-ci.org/JYUED/fex.svg?branch=master)](https://travis-ci.org/JYUED/fex)
-
 A frontend framework with gulp and browserify.   
 
 ## Features
