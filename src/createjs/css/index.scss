@@ -1,0 +1,12 @@
+@import 'common';
+.zoom {
+    @include size(px(800));
+}
+.source-img {
+    @include size(px(400));
+}
+.first {
+    top: px(500); 
+    left: px(50)
+}
+

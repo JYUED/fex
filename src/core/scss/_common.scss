@@ -1,0 +1,42 @@
+@import "base";
+@import "bourbon";
+$max-width: 10rem;
+// class 
+.in-mask {
+    @include size(100%);
+    position: fixed;
+    margin: 0 auto;
+    top: 0;
+    background-color: rgba(0,0,0,.5);
+    max-width: $max-width;
+    text-align: center;
+    z-index: 100;
+}
+.hide { display:none; }
+
+//mixin
+@mixin m-dialog($top) {
+  -webkit-tap-highlight-color: none;
+  position: fixed;
+  z-index: 101;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: $max-width;
+  top: $top;
+  text-align: center;
+  img {
+     display: inline-block; 
+  }
+}
+
+// function
+@function px($px, $base-font-size: 75px) {
+    @if (unitless($px * 1px)) {
+        @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
+        @return px($px * 1px + 0px); 
+    } @else if (unit($px * 1px) == rem) {
+        @return $px * 1px;
+    }
+    @return ( $px * 1px / $base-font-size) * 1rem;
+}
+

@@ -19,8 +19,11 @@
   "dependencies": {
     "async": "^2.0.0-rc.6",
     "bourbon": "^4.2.7",
+    "easeljs": "^0.8.2",
     "handlebars": "^4.0.5",
-    "lodash": "^4.13.1"
+    "lodash": "^4.13.1",
+    "zepto": "^1.0.1",
+    "zepto-smart-zoom": "^1.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
@@ -68,6 +71,7 @@
     "karma-jasmine": "^1.0.2",
     "metalsmith": "^2.1.0",
     "node-sass": "^3.6.0",
+    "postcss": "^5.0.21",
     "rev-del": "^1.0.5",
     "through2": "^2.0.1",
     "tiny-lr": "^0.2.1",
@@ -76,7 +80,7 @@
   },
   "browser": {
     "zepto": "./src/lib/zepto/1.1.6/zepto.min.js",
-    "Modernizr": "./src/lib/modernizr/modernizr.js"
+    "modernizr": "./src/lib/modernizr/modernizr.js"
   },
   "browserify-shim": {
     "zepto": "$"

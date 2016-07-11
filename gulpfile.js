@@ -44,7 +44,7 @@ var base64Extensions = ['jpg', 'webp', 'svg', 'png', /\.jpg#datauri$/i];
 var jsSrc = function($c) {
     return [ 
         $c._jsPath + '/*.js', 
-        '!' + $c._jsPath + '/min.js'
+        '!' + $c._jsPath + '/*min.js'
     ];
 }
  
@@ -68,9 +68,9 @@ gulp.task('dev-css',['mockComponent'], function() {
 	           .pipe(ps.plumber())
                .pipe(ps.sass({includePaths: includePaths}))
                .pipe(ps.postcss(cssProcessors($c)))
-               .pipe(ps.concat('min.css'))
+               .pipe(ps.concat('min.css', {newLine: ';'}))
                .pipe(gulp.dest($c._dir + '/css'))
-               .pipe(ps.notify($c._dir + '/css/min.css 压缩完毕！'));
+               .pipe(ps.notify($c._dir + '/css/min.css 编译完毕！'));
 });
 
 gulp.task('dev-js', ['mockComponent'], function() {
@@ -88,9 +88,9 @@ gulp.task('dev-js', ['mockComponent'], function() {
                     });
                }))
                .pipe(ps.concat('min.js', {newLine: ';'}))
-               .pipe(ps.uglify())
+               // .pipe(ps.uglify())
                .pipe(gulp.dest($c._dir + '/js'))
-               .pipe(ps.notify($c._dir + '/js/min.js 压缩完毕！'));
+               .pipe(ps.notify($c._dir + '编译完毕！'));
 });
 
 //开启本地 Web 服务器功能
@@ -154,6 +154,7 @@ function component_js(component) {
     return gulp.src(jsSrc(component))
                .pipe(ps.plumber())
                .pipe(through2.obj(function(file, enc, next) {
+               console.log(file)
                     browserify(file.path)
                     .bundle(function(err, res) {
                         err && console.log(err.stack);

@@ -1,7 +1,7 @@
 {
     "js": { "es6": false },
     "dev": {
-        "host": "localhost",
+        "host": "10.10.110.75",
         "port": "8080", 
         "livereload": true
     },
